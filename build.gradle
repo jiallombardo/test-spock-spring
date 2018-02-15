@@ -1,0 +1,27 @@
+group 'test-spock-spring'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring dependencies
+    compile("org.springframework.boot:spring-boot-starter-actuator:1.5.10.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-aop:1.5.10.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-jetty:1.5.10.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-web:1.5.10.RELEASE") {
+        exclude(group: "org.springframework.boot", module: "spring-boot-starter-tomcat")
+    }
+
+    testCompile("cglib:cglib-nodep:3.2.4")
+    testCompile("org.codehaus.groovy:groovy-all:2.4.4")
+    testCompile("org.springframework.boot:spring-boot-starter-test:1.5.10.RELEASE")
+    testCompile("org.spockframework:spock-core:1.1-groovy-2.4")
+    testCompile("org.spockframework:spock-spring:1.1-groovy-2.4")
+}
